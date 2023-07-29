@@ -1,13 +1,58 @@
-body {
+
+* {
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.view-data {
+  background-color: #e4e4e4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.register {
+  width: 100%;
+  height: 100vh;
+  background: url("../src/Images/pngwing.png") no-repeat 0 0;
+  background-color: rgb(167, 168, 174);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+
+
+.Welcome {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.head {
+  text-align: center;
+}
+.btnn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btnn-1{
+  padding: 10px;
+  width: 155px;
+  background-color: rgb(29, 63, 41);
+  border-radius: 5px;
+  color: white;
+  border: none;
+  outline: none;
+}
+.result{
+  background-color: rgb(104, 94, 94);
+  padding: 10px;
+  margin-top: 10px;
+  text-align: center;
 }
