@@ -81,7 +81,8 @@ function App() {
     };
     axios
       .post(
-        "https://sheet.best/api/sheets/0fdf7336-2b26-4d1d-8bc6-5f81e71efb02",
+        // "https://sheet.best/api/sheets/0fdf7336-2b26-4d1d-8bc6-5f81e71efb02",
+        "https://sheetdb.io/api/v1/jzh5le0t0227h",
         data
       )
       .then((response) => {
@@ -113,7 +114,9 @@ function App() {
   // getting data function
   const getData = () => {
     axios
-      .get("https://sheet.best/api/sheets/0fdf7336-2b26-4d1d-8bc6-5f81e71efb02")
+      // .get("https://sheet.best/api/sheets/0fdf7336-2b26-4d1d-8bc6-5f81e71efb02")
+      .get("https://sheetdb.io/api/v1/jzh5le0t0227h")
+      
       .then((response) => {
         setData(response.data);
       });
@@ -363,6 +366,7 @@ function App() {
                         name="farming-area"
                         value="Yes"
                         onClick={() => setAgroforestry(true)}
+                        required
                       />
                     </div>
                     <div>
