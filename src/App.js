@@ -1,30 +1,34 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-import { Data } from './components/Data'
-// 
+import { Data } from "./components/Data";
+//
 
 function App() {
-
   // form states
-  const [fpoName, setFpoName] = useState('');
-  const [name, setName] = useState('');
-  const [PhoneNo, setPhoneNo] = useState('');
-  const [State, setState] = useState('');
+  const [fpoName, setFpoName] = useState("");
+  const [name, setName] = useState("");
+  const [PhoneNo, setPhoneNo] = useState("");
+  const [State, setState] = useState("");
 
-  const [district, setDistrict] = useState('');
-  const [village, setVillage] = useState('');
-  const [LandArea, setLandArea] = useState('');
-  const [cropsSowing, setCropsSowing] = useState('');
+  const [district, setDistrict] = useState("");
+  const [village, setVillage] = useState("");
+  const [LandArea, setLandArea] = useState("");
+  const [cropsSowing, setCropsSowing] = useState("");
 
-  const [coverCrops, setCoverCrops] = useState('');
-  const [intercrops, setIntercrops] = useState('');
-  const [location, setLocation] = useState('');
-  const [objective, setObjective] = useState('')
-    ;
-  const [nitrogenFixing, setNitrogenFixing] = useState('');
-  const [villagePractices, setVillagePractices] = useState('');
-  // const [agroforestry, setAgroforestry] = useState('');
+  const [coverCrops, setCoverCrops] = useState("");
+  const [intercrops, setIntercrops] = useState("");
+  const [location, setLocation] = useState("");
+  const [objective, setObjective] = useState("");
+
+  const [nitrogenFixing, setNitrogenFixing] = useState("");
+  const [villagePractices, setVillagePractices] = useState("");
+
+  const [agroforestry, setAgroforestry] = useState(false);
+
+  const [agroforestryArea, setAgroforestryArea] = useState("");
+  const [agroforestrySystem, setAgroforestrySystem] = useState("");
+  const [treesAndSpecies, setTreesAndSpecies] = useState("");
 
 
 
@@ -34,71 +38,115 @@ function App() {
   // submit event
   const handleSubmit = (e) => {
     e.preventDefault();
-     console.log(fpoName, name, PhoneNo, State, district, village, LandArea, cropsSowing, coverCrops, intercrops, location, objective, nitrogenFixing, villagePractices);
+    console.log(
+      fpoName,
+      name,
+      PhoneNo,
+      State,
+      district,
+      village,
+      LandArea,
+      cropsSowing,
+      coverCrops,
+      intercrops,
+      location,
+      objective,
+      nitrogenFixing,
+      villagePractices,
+      agroforestryArea,
+      agroforestrySystem,
+      treesAndSpecies
+
+    );
 
     // our object to pass
     const data = {
-      fpoName, name, PhoneNo, State, district, village, LandArea, cropsSowing, coverCrops, intercrops, location, objective, nitrogenFixing, villagePractices
-    }
-    axios.post('https://sheet.best/api/sheets/0fdf7336-2b26-4d1d-8bc6-5f81e71efb02', data).then(response => {
-      console.log(response);
-      setFpoName('');
-      setName('');
-      setPhoneNo('');
-      setState('');
+      fpoName,
+      name,
+      PhoneNo,
+      State,
+      district,
+      village,
+      LandArea,
+      cropsSowing,
+      coverCrops,
+      intercrops,
+      location,
+      objective,
+      nitrogenFixing,
+      villagePractices,
+      agroforestryArea,
+      agroforestrySystem,
+      treesAndSpecies
+    };
+    axios
+      .post(
+        "https://sheet.best/api/sheets/0fdf7336-2b26-4d1d-8bc6-5f81e71efb02",
+        data
+      )
+      .then((response) => {
+        console.log(response);
+        setFpoName("");
+        setName("");
+        setPhoneNo("");
+        setState("");
 
-      setDistrict('');
-      setVillage('');
-      setLandArea('');
-      setCropsSowing('');
+        setDistrict("");
+        setVillage("");
+        setLandArea("");
+        setCropsSowing("");
 
-      setCoverCrops('');
-      setIntercrops('');
-      setLocation('');
-      setObjective('');
+        setCoverCrops("");
+        setIntercrops("");
+        setLocation("");
+        setObjective("");
 
-      setNitrogenFixing('');
-      setVillagePractices('');
+        setNitrogenFixing("");
+        setVillagePractices("");
 
-    })
-  }
+        setAgroforestryArea("");
+        setAgroforestrySystem("");
+        setTreesAndSpecies("");
+      });
+  };
 
   // getting data function
   const getData = () => {
-    axios.get('https://sheet.best/api/sheets/0fdf7336-2b26-4d1d-8bc6-5f81e71efb02').then((response) => {
-      setData(response.data);
-    })
-  }
+    axios
+      .get("https://sheet.best/api/sheets/0fdf7336-2b26-4d1d-8bc6-5f81e71efb02")
+      .then((response) => {
+        setData(response.data);
+      });
+  };
 
   // triggering function
   useEffect(() => {
     getData();
-  }, [data])
-
-
+  }, [data]);
 
   return (
     <div className="register">
       <div className="container ">
-        <div className="row ">
-
-
-          <div className="col">
-            <form autoComplete="off" className='form-group'
-              onSubmit={handleSubmit}>
+        <div className="row justify-content-center align-items-center ">
+          <div className="col-10">
+            <form
+              autoComplete="off"
+              className="form-group"
+              onSubmit={handleSubmit}
+            >
               <div className="row">
                 <div className="col">
-                  <h1 className="Welcome">Welcome to Carbon Credit Program</h1>
+                  <h3 className="Welcome">Welcome to Carbon Credit Program</h3>
                 </div>
               </div>
               <div className="row">
                 <div className="col">
-                  <h3 className="head"> Register as Farmer</h3>
+                  <h5 className="head"> Register as Farmer</h5>
                 </div>
               </div>
 
-              <div className="row">
-                <div className="col-md-4 mb-3">
+              <div className="row rowww">
+                <div className="col-md-4   mb-3">
                   <label htmlFor="validationCustom01">FPO Name</label>
                   <input
                     type="text"
@@ -111,7 +159,7 @@ function App() {
                   />
                 </div>
 
-                <div className="col-md-4 mb-3">
+                <div className="col-md-4   mb-3">
                   <label htmlFor="validationCustom02">Name</label>
                   <input
                     type="text"
@@ -124,10 +172,10 @@ function App() {
                   />
                 </div>
 
-                <div className="col-md-4 mb-3">
+                <div className="col-md-4   mb-3">
                   <label htmlFor="validationCustom03">Phone Number</label>
                   <input
-                    type="text"
+                    type="number"
                     className="form-control"
                     id="validationCustom03"
                     placeholder="Enter your Phone Number"
@@ -138,11 +186,9 @@ function App() {
                 </div>
               </div>
 
-              <div className="row">
-                <div className="col-md-4 mb-3">
-                  <label htmlFor="validationCustom04">State
-
-                  </label>
+              <div className="row rowww">
+                <div className="col-md-4   mb-3">
+                  <label htmlFor="validationCustom04">State</label>
                   <input
                     type="text"
                     className="form-control"
@@ -154,10 +200,8 @@ function App() {
                   />
                 </div>
 
-                <div className="col-md-4 mb-3">
-                  <label htmlFor="validationCustom05">
-                    District
-                  </label>
+                <div className="col-md-4  mb-3">
+                  <label htmlFor="validationCustom05">District</label>
                   <input
                     type="text"
                     className="form-control"
@@ -170,10 +214,7 @@ function App() {
                 </div>
 
                 <div className="col-md-4 mb-3">
-                  <label htmlFor="validationCustom06">
-
-                    Village
-                  </label>
+                  <label htmlFor="validationCustom06">Village</label>
                   <input
                     type="text"
                     className="form-control"
@@ -186,7 +227,7 @@ function App() {
                 </div>
               </div>
 
-              <div className="row">
+              <div className="row rowww">
                 <div className="col-md-4 mb-3">
                   <label htmlFor="validationCustom07">Total Land Area</label>
                   <input
@@ -201,7 +242,9 @@ function App() {
                 </div>
 
                 <div className="col-md-4 mb-3">
-                  <label htmlFor="validationCustom08">Crops sowing (Current)</label>
+                  <label htmlFor="validationCustom08">
+                    Crops sowing (Current)
+                  </label>
                   <input
                     type="text"
                     className="form-control"
@@ -213,8 +256,10 @@ function App() {
                   />
                 </div>
 
-                <div className="col-md-4 mb-3">
-                  <label htmlFor="validationCustom09">Cover Crops (if any)</label>
+                <div className="col-md-4   mb-3">
+                  <label htmlFor="validationCustom09">
+                    Cover Crops (if any)
+                  </label>
                   <input
                     type="text"
                     className="form-control"
@@ -226,9 +271,11 @@ function App() {
                   />
                 </div>
               </div>
-              <div className="row">
-                <div className="col-md-4 mb-3">
-                  <label htmlFor="validationCustom010">Intercrops (if any)</label>
+              <div className="row rowww">
+                <div className="col-md-4   mb-3">
+                  <label htmlFor="validationCustom010">
+                    Intercrops (if any)
+                  </label>
                   <input
                     type="text"
                     className="form-control"
@@ -241,7 +288,9 @@ function App() {
                 </div>
 
                 <div className="col-md-4 mb-3">
-                  <label htmlFor="validationCustom011">Geographic Co-ordinates of the Project Location</label>
+                  <label htmlFor="validationCustom011">
+                    Geographic Co-ordinates of the Project Location
+                  </label>
                   <input
                     type="text"
                     className="form-control"
@@ -253,8 +302,10 @@ function App() {
                   />
                 </div>
 
-                <div className="col-md-4 mb-3">
-                  <label htmlFor="validationCustom012">Objective of the farming project</label>
+                <div className="col-md-4  mb-3">
+                  <label htmlFor="validationCustom012">
+                    Objective of the farming project
+                  </label>
                   <input
                     type="text"
                     className="form-control"
@@ -267,9 +318,12 @@ function App() {
                 </div>
               </div>
 
-              <div className="row lastt">
-                <div className="col-md-4 mb-3">
-                  <label htmlFor="validationCustom013">Does the Area of farming have cropped/planted with nitrogen-fixing species (e.g. dhencha, lentils, etc)?</label>
+              <div className="row lastt rowww">
+                <div className="col-md-4   mb-3">
+                  <label htmlFor="validationCustom013">
+                    Does the Area of farming have cropped/planted with
+                    nitrogen-fixing species
+                  </label>
                   <input
                     type="text"
                     className="form-control"
@@ -281,8 +335,10 @@ function App() {
                   />
                 </div>
 
-                <div className="col-md-4 mb-3">
-                  <label htmlFor="validationCustom014">Does the farming have improved Village Practices</label>
+                <div className="col-md-4   mb-3">
+                  <label htmlFor="validationCustom014">
+                    Does the farming have improved Village Practices
+                  </label>
                   <input
                     type="text"
                     className="form-control"
@@ -294,71 +350,128 @@ function App() {
                   />
                 </div>
 
-                <div className="col-md-4 mb-3">
-                  <label htmlFor="validationCustom015">Does the area (farming)have agroforestry</label>
+                <div className="col-md-4   mb-3">
+                  <label htmlFor="validationCustom015">
+                    Does the area (farming)have agroforestry
+                  </label>
                   <div id="farming-area">
-
                     <div>
+                      Yes
                       <input
                         className="radio"
                         type="radio"
-                        id="Yes"
                         name="farming-area"
                         value="Yes"
+                        onClick={() => setAgroforestry(true)}
                       />
-                      <label htmlFor="Yes">Yes</label>
                     </div>
                     <div>
+                      NO
                       <input
                         className="radio"
                         type="radio"
-                        id="NO"
                         name="farming-area"
                         value="NO"
+                        onClick={() => setAgroforestry(false)}
                       />
-                      <label htmlFor="NO">NO</label>
                     </div>
-
                   </div>
-
                 </div>
               </div>
-              <div className='row '>
-                <div className="btnn  "><button type='submit' className="btnn-1" >submit</button></div>
-              </div>
+              {!agroforestry && (
+                <div className="row ">
+                  <div className="btnn  ">
+                    <button type="submit" className="btnn-1">
+                      submit
+                    </button>
+                  </div>
+                </div>
+              )}
 
+              {agroforestry && (
+                <div className="popup">
+                  <div className="row rowww">
+                    <div className="col-md-4   mb-3">
+                      <label htmlFor="validationCustom015">
+                      Area of Agroforestry (acres)
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="validationCustom015"
+                        placeholder="Enter Area of Agroforestry"
+                        value={agroforestryArea}
+                        onChange={(e) => setAgroforestryArea(e.target.value)}
+                        required
+                      />
+                    </div>
 
+                    <div className="col-md-4   mb-3">
+                      <label htmlFor="validationCustom016">
+                      Types of Agroforestry System 
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="validationCustom016"
+                        placeholder="Enter Types of Agroforestry System"
+                        value={agroforestrySystem}
+                        onChange={(e) => setAgroforestrySystem(e.target.value)}
+                        required
+                      />
+                    </div>
+
+                    <div className="col-md-4   mb-3">
+                      <label htmlFor="validationCustom017">
+                      Number of trees and species (Used in acres) 
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="validationCustom017"
+                        placeholder=" Enter Number of trees and species "
+                        value={treesAndSpecies}
+                        onChange={(e) => setTreesAndSpecies(e.target.value)}
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div className="row ">
+                    <div className="btnn  ">
+                      <button type="submit" className="btnn-1">
+                      submit
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
             </form>
-            <div className='result'>
-
+            <div className="result">
               {data.length < 1 && <>No data to show</>}
               {data.length > 0 && (
-                <div className='table-responsive'>
-                  <table className='table'>
+                <div className="table-responsive">
+                  <table className="table">
                     <thead>
                       <tr>
-                        <th scope='col'>Index</th>
-                        <th scope='col'>FPO Name</th>
-                        <th scope='col'>Name</th>
-                        <th scope='col'>Phone No</th>
-                        <th scope='col'>State</th>
+                        <th scope="col">Index</th>
+                        <th scope="col">FPO Name</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Phone No</th>
+                        <th scope="col">State</th>
 
+                        <th scope="col">District</th>
+                        <th scope="col">district</th>
+                        <th scope="col">Land Area</th>
+                        <th scope="col">crops Sowing</th>
 
-                        <th scope='col'>District</th>
-                        <th scope='col'>district</th>
-                        <th scope='col'>Land Area</th>
-                        <th scope='col'>crops Sowing</th>
+                        <th scope="col">cover Crops</th>
+                        <th scope="col">intercrops</th>
+                        <th scope="col">location</th>
+                        <th scope="col">objective</th>
 
-
-                        <th scope='col'>cover Crops</th>
-                        <th scope='col'>intercrops</th>
-                        <th scope='col'>location</th>
-                        <th scope='col'>objective</th>
-
-                        <th scope='col'>nitrogenFixing</th>
-                        <th scope='col'>villagePractices</th>
-
-
+                        <th scope="col">nitrogenFixing</th>
+                        <th scope="col">villagePractices</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -373,8 +486,6 @@ function App() {
       </div>
     </div>
   );
-
-
 }
 
 export default App;

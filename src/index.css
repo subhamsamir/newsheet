@@ -17,9 +17,10 @@
 
 .register {
   width: 100%;
-  height: 100vh;
+  height: 110vh;
+  padding: 15px;
   background: url("../src/Images/pngwing.png") no-repeat 0 0;
-  background-color: rgb(167, 168, 174);
+  background-color: rgb(200, 201, 208);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -30,7 +31,7 @@
 
 .Welcome {
   text-align: center;
-  margin-top: 25px;
+  margin-top: 15px;
 }
 
 .head {
@@ -51,8 +52,43 @@
   outline: none;
 }
 .result{
-  background-color: rgb(104, 94, 94);
-  padding: 10px;
+
+  
   margin-top: 10px;
   text-align: center;
 }
+/* .popup{
+  height: 100vh;
+  width: 100%;
+  background-color: rgb(101, 93, 93);
+  z-index: 1;
+  opacity: 0.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 0px;
+  left: 0px;
+
+} */
+ @media screen and (max-width:1140px) {
+ .register{
+  height: auto;
+ } 
+}
+
+
+@media screen and (max-width:780px) {
+
+  .register {
+    width: 100%;
+    height: auto;
+    padding: 15px;
+    background: none;
+    background-color: rgb(200, 201, 208);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  
+  }
+} 
