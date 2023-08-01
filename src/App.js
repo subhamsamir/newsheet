@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+// import {useEffect } from "react";
 import axios from "axios";
 
-import { Data } from "./components/Data";
-//
+// import { Data } from "./components/Data";
 
 function App() {
   // form states
@@ -33,31 +33,12 @@ function App() {
 
 
   // retrived data state
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
 
   // submit event
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(
-      fpoName,
-      name,
-      PhoneNo,
-      State,
-      district,
-      village,
-      LandArea,
-      cropsSowing,
-      coverCrops,
-      intercrops,
-      location,
-      objective,
-      nitrogenFixing,
-      villagePractices,
-      agroforestryArea,
-      agroforestrySystem,
-      treesAndSpecies
 
-    );
 
     // our object to pass
     const data = {
@@ -86,7 +67,28 @@ function App() {
         data
       )
       .then((response) => {
+        
         console.log(response);
+        console.log(
+          fpoName,
+          name,
+          PhoneNo,
+          State,
+          district,
+          village,
+          LandArea,
+          cropsSowing,
+          coverCrops,
+          intercrops,
+          location,
+          objective,
+          nitrogenFixing,
+          villagePractices,
+          agroforestryArea,
+          agroforestrySystem,
+          treesAndSpecies
+    
+        );
         setFpoName("");
         setName("");
         setPhoneNo("");
@@ -108,24 +110,26 @@ function App() {
         setAgroforestryArea("");
         setAgroforestrySystem("");
         setTreesAndSpecies("");
-      });
+      }).catch((error)=>{
+        console.log(error)
+      })
   };
 
   // getting data function
-  const getData = () => {
-    axios
-      // .get("https://sheet.best/api/sheets/0fdf7336-2b26-4d1d-8bc6-5f81e71efb02")
-      .get("https://sheetdb.io/api/v1/jzh5le0t0227h")
+  // const getData = () => {
+  //   axios
+  //     // .get("https://sheet.best/api/sheets/0fdf7336-2b26-4d1d-8bc6-5f81e71efb02")
+  //     .get("https://sheetdb.io/api/v1/jzh5le0t0227h")
       
-      .then((response) => {
-        setData(response.data);
-      });
-  };
+  //     .then((response) => {
+  //       setData(response.data);
+  //     });
+  // };
 
-  // triggering function
-  useEffect(() => {
-    getData();
-  }, [data]);
+  // // triggering function
+  // useEffect(() => {
+  //   getData();
+  // }, [data]);
 
   return (
     <div className="register">
@@ -451,6 +455,8 @@ function App() {
                 </div>
               )}
             </form>
+
+            {/*  
             <div className="result">
               {data.length < 1 && <>No data to show</>}
               {data.length > 0 && (
@@ -485,6 +491,8 @@ function App() {
                 </div>
               )}
             </div>
+
+            */}
           </div>
         </div>
       </div>
