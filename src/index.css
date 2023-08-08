@@ -1,9 +1,17 @@
 
+
+
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+.app{
+  display: flex;
+  flex-direction: column;
 }
 
 .view-data {
@@ -16,10 +24,9 @@
 }
 
 .register {
-  width: 100%;
-  height: 110vh;
-  padding: 15px;
-  background: url("../src/Images/pngwing.png") no-repeat 0 0;
+
+  height: 100vh;
+  background: url("../src/Images/bg1.jpeg") no-repeat 0 0;
   background-color: rgb(200, 201, 208);
   background-position: center;
   background-repeat: no-repeat;
@@ -71,6 +78,14 @@
   left: 0px;
 
 } */
+
+.SignUpp{
+  height: 100vh;
+}
+
+.Loginn{
+  height: 100vh;
+}
  @media screen and (max-width:1140px) {
  .register{
   height: auto;
@@ -92,3 +107,53 @@
   
   }
 } 
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  /* background: #FDFBFB; */
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.content {
+  display: flexbox;
+}
+
+.sideNav {
+  height: 100vh;
+}
+
+.maincontent {
+  width: 100%;
+  background: #FDFBFB;
+}
+
+
+.Dashboard {
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+.analytics {
+  display: flex;
+  flex-direction: row;
+  background-color: blueviolet;
+  width: auto;
+  height: 25%;
+  justify-content: space-around;
+}
+
+.elements {
+  background-color: black;
+  height: 90%;
+  width: 20%;
+  margin-top: 10px;
+  border-radius: 1rem;
+}
