@@ -12,7 +12,7 @@ const Login = () => {
   // console.log({email,password})
   // const [allEntry, setAllEntry] = useState([]);
   const submitForm = (e) => {
-    e.preventDefault();
+    e.preventDefault(); 
 
     const loginData = {
       email: email,
@@ -48,7 +48,7 @@ const Login = () => {
             <AiOutlineUser />
           </div>
           <h4 className="text-center mt-2">Login</h4>
-          <form autoComplete="off" className="form-group p-3">
+          <form autoComplete="off" className="form-group p-3" onSubmit={submitForm}>
             <div className="row ">
               <div className="col-8 offset-2 mb-3">
                 <label htmlFor="email"> Email</label>
@@ -91,7 +91,7 @@ const Login = () => {
 
             <div className="row mt-2 ">
               <div className="col-8 offset-2 mb-3 loginSubmit  ">
-                <button type="submit" className="btn-primary " onClick={submitForm}>
+                <button type="submit" className="btn-primary " >
                   LogIn
                 </button>
               </div>
