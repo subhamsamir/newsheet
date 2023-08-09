@@ -1,5 +1,7 @@
 import React from "react";
 import "./RegisterAsFarmer.scss";
+import Navbar from "./Navbar";
+
 
 import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -134,9 +136,24 @@ const RegisterAsFarmer = () => {
       
   };
 
+  // getting data function
+  // const getData = () => {
+  //   axios
+  //     // .get("https://sheet.best/api/sheets/0fdf7336-2b26-4d1d-8bc6-5f81e71efb02")
+  //     .get("https://sheetdb.io/api/v1/jzh5le0t0227h")
 
+  //     .then((response) => {
+  //       setData(response.data);
+  //     });
+  // };
+
+  // // triggering function
+  // useEffect(() => {
+  //   getData();
+  // }, [data]);
   return (
-    <div className="container-fluid register ">
+    <div className=" register ">
+    <Navbar />
       <div className="row justify-content-center align-items-center ">
         <div className="col-10">
           <form
@@ -146,7 +163,7 @@ const RegisterAsFarmer = () => {
           >
             <div className="row">
               <div className="col">
-                <h3 className="Welcome">Welcome to Carbon Credit Program</h3>
+                <h6 className="Welcome">Welcome to Carbon Credit Program</h6>
               </div>
             </div>
             <div className="row">
@@ -446,7 +463,7 @@ const RegisterAsFarmer = () => {
 
                 <div className="row ">
                   <div className="btnn  ">
-                    <button type="submit" className="btnn-1" onSubmit={handleSubmit}>
+                    <button type="submit" className="btnn-1 mb-5" onSubmit={handleSubmit}>
                       submit
                     </button>
                   </div>

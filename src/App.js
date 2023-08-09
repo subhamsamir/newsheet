@@ -4,12 +4,14 @@ import Login from "./components/loginSignup/Login";
 import EnterNumber from "./components/loginSignup/EnterNumber";
 import RegisterAsFarmer from "./components/loginSignup/RegisterAsFarmer";
 import ResetPassword from "./components/loginSignup/ResetPassword";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="app">
+    <div className=" app">
       <BrowserRouter>
+
         <Routes>
 
         <Route path="/" element={<Login />}></Route>

@@ -42,8 +42,8 @@ const Login = () => {
   };
   return (
     <div className="container-fluid loginBg ">
-      <div className=" row  mt-4  ">
-        <div className="col-sm-6 offset-sm-3 col-md-6 offset-md-3 col-lg-4 offset-lg-4 loginBox p-2 mt-4">
+      <div className=" row login-background ">
+        <div className="col-sm-6 offset-sm-3 col-md-6 offset-md-3 col-lg-4 offset-lg-4 loginBox p-2 mt-5">
           <div className="logo  ">
             <AiOutlineUser />
           </div>

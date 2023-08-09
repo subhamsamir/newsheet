@@ -7,7 +7,7 @@ const ResetPassword = () => {
 
   const submitReset = (e) => {
     e.preventDefault(); 
-    navigate('/login')
+    navigate('/login');
 
 
   }
@@ -15,16 +15,16 @@ const ResetPassword = () => {
   return (
     <div className="container-fluid EnterNumber ">
       <div className=" row  mt-4  ">
-        <div className="col-sm-6 offset-sm-3 col-md-6 offset-md-3 col-lg-4 offset-lg-4  EnterNumberbox p-4 mt-4">
+        <div className="col-sm-6 offset-sm-3 col-md-6 offset-md-3 col-lg-4 offset-lg-4  reset p-4 mt-4">
           <h4 className="text-center mt-2">Reset Password</h4>
           <form autoComplete="off" className="form-group "  onSubmit={submitReset}>
           <div className="row">
-            <div className="col-8 offset-2 mt-3">
-              <p className="text-center mt-4">
+            <div className="col-10 offset-1 mt-2">
+              <p className="text-center mt-1">
                 Set a new password for your account so that you cam login
               </p>
               <div className="row">
-                <div className="col-8 offset-2 mt-2">
+                <div className="col-10 offset-1 mt-2">
                   <label htmlFor="NewPassword">New Password </label>
                   <input
                     type="password"
@@ -35,7 +35,7 @@ const ResetPassword = () => {
                   />
                 </div>
 
-                <div className="col-8 offset-2 mt-1">
+                <div className="col-10  offset-1 mt-1">
                   <label htmlFor="ConfirmPassword">Confirm Password</label>
                   <input
                     type="password"
@@ -49,8 +49,8 @@ const ResetPassword = () => {
             </div>
 
             <div className="row mt-4   ">
-              <div className="col-8 offset-2 mb-2 EnterNumberSubmit  ">
-                <button type="submit" className="btn-primary p-1 ">
+              <div className="col-8 of offset-2 EnterNumberSubmit  ">
+                <button type="submit" className="btn-primary bt2 ">
                 Reset  
                 </button>
               </div>
