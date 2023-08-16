@@ -4,12 +4,16 @@ import Login from "./components/loginSignup/Login";
 import EnterNumber from "./components/loginSignup/EnterNumber";
 import RegisterAsFarmer from "./components/loginSignup/RegisterAsFarmer";
 import ResetPassword from "./components/loginSignup/ResetPassword";
+import EditForm from "./components/loginSignup/EditForm";
+import Contact from "./components/loginSignup/Contact";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className=" app">
+
+    
       <BrowserRouter>
 
         <Routes>
@@ -18,8 +22,11 @@ function App() {
          <Route path="/login" element={<Login />}></Route>
          <Route path="/signup" element={<SignUp />}></Route>
          <Route path="/EnterNumber" element={<EnterNumber />}></Route>
-         <Route path="/RegisterAsFarmer" element={<RegisterAsFarmer />}></Route>
+         
          <Route path="/ResetPassword" element={<ResetPassword />}></Route>
+         <Route path="/RegisterAsFarmer" element={<RegisterAsFarmer />}></Route>
+         <Route path="/EditForm" element={<EditForm />}></Route>
+         <Route path="/Contact" element={<Contact />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

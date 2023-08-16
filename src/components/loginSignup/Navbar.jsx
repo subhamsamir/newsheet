@@ -3,19 +3,44 @@ import { FaUserCircle } from "react-icons/fa";
 import { AiOutlineHome } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import "./Navbar.scss";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const [pupup,setPopup ] = useState(false);
+  const navigate =useNavigate()
+
+  const logout =()=>{
+    localStorage.removeItem('token')
+    navigate('/login')
+
+  }
+
+
+
+
   return (
     <nav className="navbar">
       <div className="logoText">Carbon Credit</div>
       <ul className="nav-links">
         <li><Link to="/RegisterAsFarmer"><AiOutlineHome /></Link></li>
-        <li><Link to="/RegisterAsFarmer">About</Link></li>
-        <li><Link to="/RegisterAsFarmer">Contact</Link></li>
-        <li><Link to="/RegisterAsFarmer"><FaUserCircle /></Link></li>
+        <li><Link to="/EditForm">About</Link></li>
+        <li><Link to="/Contact">Contact</Link></li>
+        <li className="user" onClick={()=>setPopup(!pupup)}><FaUserCircle /></li>
         
       </ul>
+    
+      { pupup  ?  <div className="userPopup">
+      <p>sandeep singh</p>
+      <button onClick={logout}>logout</button>
+     </div> : null
+     
+      
+      }
+    
     </nav>
+
+
   );
 };
 

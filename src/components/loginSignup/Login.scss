@@ -2,10 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    // border: 1px solid black;
-
-
-
+    // border: 1px solid black
 }
 
 .loginBg {
@@ -60,6 +57,21 @@
             background-color: rgb(23, 47, 33); 
         }
     }
+}
+.eyeBtn{
+    background-color: rgb(249, 249, 249);
+    height: 40px;
+    width: 40px;
+    border-radius: 0 5px 5px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.outline{
+    // outline: none !important;
+    // border: none !important;
+    border: 0  !important;
+    box-shadow: none  !important;
 }
 
 @media screen and (min-width:990px) {  

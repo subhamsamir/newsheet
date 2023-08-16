@@ -6,7 +6,9 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-color: rgb(161, 179, 179);
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+
 }
 .btnn-1{
         width: 140px;
@@ -21,10 +23,11 @@
     }
 
 
-@media screen and (max-width:1400px) {
+@media screen and (max-width:700px) {
 
     .register{
         height: auto;
+ 
 
     }
 }

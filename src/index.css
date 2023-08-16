@@ -24,18 +24,6 @@
   margin-top: 20px;
 }
 
-.register {
-
-  height: 100vh;
-  background: url("../src/Images/bg1.jpeg") no-repeat 0 0;
-  background-color: rgb(200, 201, 208);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-}
-
-
 
 .Welcome {
   text-align: center;
@@ -50,15 +38,7 @@
   align-items: center;
   justify-content: center;
 }
-.btnn-1{
-  padding: 10px;
-  width: 155px;
-  background-color: rgb(29, 63, 41);
-  border-radius: 5px;
-  color: white;
-  border: none;
-  outline: none;
-}
+
 
 .result{
 
@@ -89,35 +69,16 @@
 .Loginn{
   height: 100vh;
 }
- @media screen and (max-width:1140px) {
- .register{
-  height: auto;
- } 
-}
 
 
-@media screen and (max-width:780px) {
 
-  .register {
-    width: 100%;
-    height: auto;
-    padding: 15px;
-    background: none;
-    background-color: rgb(200, 201, 208);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  
-  }
-} 
-
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
   /* background: #FDFBFB; */
-}
+/* }
 
 body::-webkit-scrollbar {
   display: none;
@@ -134,10 +95,10 @@ body::-webkit-scrollbar {
 .maincontent {
   width: 100%;
   background: #FDFBFB;
-}
+} */
 
 
-.Dashboard {
+/* .Dashboard {
   display: flex;
   flex-direction: row;
 }
@@ -159,4 +120,4 @@ body::-webkit-scrollbar {
   width: 20%;
   margin-top: 10px;
   border-radius: 1rem;
-}
+} */ 

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 import "./RegisterAsFarmer.scss";
 import Navbar from "./Navbar";
 
@@ -8,147 +8,155 @@ import { useNavigate } from "react-router-dom";
 // import {useEffect } from "react";
 import axios from "axios";
 
-const RegisterAsFarmer = () => {
-  const navigate =useNavigate()
-
-  useEffect(()=>{
-
-    if(!localStorage.getItem('token')){
-
-      navigate('/login')
-    
-    }
-  },[])
+const EditForm = () => {
 
 
-  // form states
-  const [fpoName, setFpoName] = useState("");
-  const [name, setName] = useState("");
-  const [PhoneNo, setPhoneNo] = useState("");
-  const [State, setState] = useState("");
+    const navigate =useNavigate()
 
-  const [district, setDistrict] = useState("");
-  const [village, setVillage] = useState("");
-  const [LandArea, setLandArea] = useState("");
-  const [cropsSowing, setCropsSowing] = useState("");
-
-  const [coverCrops, setCoverCrops] = useState("");
-  const [intercrops, setIntercrops] = useState("");
-  const [location, setLocation] = useState("");
-  const [objective, setObjective] = useState("");
-
-  const [nitrogenFixing, setNitrogenFixing] = useState("");
-  const [villagePractices, setVillagePractices] = useState("");
-
-  const [agroforestry, setAgroforestry] = useState(false);
-
-  const [agroforestryArea, setAgroforestryArea] = useState("");
-  const [agroforestrySystem, setAgroforestrySystem] = useState("");
-  const [treesAndSpecies, setTreesAndSpecies] = useState("");
-
-  // retrived data state
-  // const [data, setData] = useState([]);
-
-  // submit event
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-
-    
-
-    // our object to pass
-    const data = {
-      fpoName,
-      name,
-      PhoneNo,
-      State,
-      district,
-      village,
-      LandArea,
-      cropsSowing,
-      coverCrops,
-      intercrops,
-      location,
-      objective,
-      nitrogenFixing,
-      villagePractices,
-      agroforestryArea,
-      agroforestrySystem,
-      treesAndSpecies,
-    };
-    axios
-      .post(
-        "https://dcdataapp-default-rtdb.firebaseio.com/farmerReg.json",
-   
-        // "https://sheetdb.io/api/v1/jzh5le0t0227h",
-        data
-      )
-      .then((response) => {
-        console.log(response);
-        console.log(
-          fpoName,
-          name,
-          PhoneNo,
-          State,
-          district,
-          village,
-          LandArea,
-          cropsSowing,
-          coverCrops,
-          intercrops,
-          location,
-          objective,
-          nitrogenFixing,
-          villagePractices,
-          agroforestryArea,
-          agroforestrySystem,
-          treesAndSpecies
-        );
-        setFpoName("");
-        setName("");
-        setPhoneNo("");
-        setState("");
-
-        setDistrict("");
-        setVillage("");
-        setLandArea("");
-        setCropsSowing("");
-
-        setCoverCrops("");
-        setIntercrops("");
-        setLocation("");
-        setObjective("");
-
-        setNitrogenFixing("");
-        setVillagePractices("");
-
-        setAgroforestryArea("");
-        setAgroforestrySystem("");
-        setTreesAndSpecies("");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-
+    useEffect(()=>{
+  
+      if(!localStorage.getItem('token')){
+  
+        navigate('/login')
       
-  };
+      }
+  
+  
+  
+    },[])
+  
+  
+    // form states
+    const [fpoName, setFpoName] = useState("");
+    const [name, setName] = useState("");
+    const [PhoneNo, setPhoneNo] = useState("");
+    const [State, setState] = useState("");
+  
+    const [district, setDistrict] = useState("");
+    const [village, setVillage] = useState("");
+    const [LandArea, setLandArea] = useState("");
+    const [cropsSowing, setCropsSowing] = useState("");
+  
+    const [coverCrops, setCoverCrops] = useState("");
+    const [intercrops, setIntercrops] = useState("");
+    const [location, setLocation] = useState("");
+    const [objective, setObjective] = useState("");
+  
+    const [nitrogenFixing, setNitrogenFixing] = useState("");
+    const [villagePractices, setVillagePractices] = useState("");
+  
+    const [agroforestry, setAgroforestry] = useState(false);
+  
+    const [agroforestryArea, setAgroforestryArea] = useState("");
+    const [agroforestrySystem, setAgroforestrySystem] = useState("");
+    const [treesAndSpecies, setTreesAndSpecies] = useState("");
+  
+    // retrived data state
+    // const [data, setData] = useState([]);
+  
+    // submit event
+    const handleSubmit = (e) => {
+      e.preventDefault();
+  
+  
+      
+  
+      // our object to pass
+      const data = {
+        fpoName,
+        name,
+        PhoneNo,
+        State,
+        district,
+        village,
+        LandArea,
+        cropsSowing,
+        coverCrops,
+        intercrops,
+        location,
+        objective,
+        nitrogenFixing,
+        villagePractices,
+        agroforestryArea,
+        agroforestrySystem,
+        treesAndSpecies,
+      };
+      axios
+        .post(
+          "https://dcdataapp-default-rtdb.firebaseio.com/farmerReg.json",
+     
+          // "https://sheetdb.io/api/v1/jzh5le0t0227h",
+          data
+        )
+        .then((response) => {
+          console.log(response);
+          console.log(
+            fpoName,
+            name,
+            PhoneNo,
+            State,
+            district,
+            village,
+            LandArea,
+            cropsSowing,
+            coverCrops,
+            intercrops,
+            location,
+            objective,
+            nitrogenFixing,
+            villagePractices,
+            agroforestryArea,
+            agroforestrySystem,
+            treesAndSpecies
+          );
+          setFpoName("");
+          setName("");
+          setPhoneNo("");
+          setState("");
+  
+          setDistrict("");
+          setVillage("");
+          setLandArea("");
+          setCropsSowing("");
+  
+          setCoverCrops("");
+          setIntercrops("");
+          setLocation("");
+          setObjective("");
+  
+          setNitrogenFixing("");
+          setVillagePractices("");
+  
+          setAgroforestryArea("");
+          setAgroforestrySystem("");
+          setTreesAndSpecies("");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+  
+  
+        
+    };
+  
+    // getting data function
+    // const getData = () => {
+    //   axios
+    //     // .get("https://sheet.best/api/sheets/0fdf7336-2b26-4d1d-8bc6-5f81e71efb02")
+    //     .get("https://sheetdb.io/api/v1/jzh5le0t0227h")
+  
+    //     .then((response) => {
+    //       setData(response.data);
+    //     });
+    // };
+  
+    // // triggering function
+    // useEffect(() => {
+    //   getData();
+    // }, [data]);
 
-  // getting data function
-  // const getData = () => {
-  //   axios
-  //     // .get("https://sheet.best/api/sheets/0fdf7336-2b26-4d1d-8bc6-5f81e71efb02")
-  //     .get("https://sheetdb.io/api/v1/jzh5le0t0227h")
 
-  //     .then((response) => {
-  //       setData(response.data);
-  //     });
-  // };
 
-  // // triggering function
-  // useEffect(() => {
-  //   getData();
-  // }, [data]);
   return (
     <div className=" register ">
     <Navbar />
@@ -404,7 +412,7 @@ const RegisterAsFarmer = () => {
               <div className="row ">
                 <div className="btnn  ">
                   <button type="submit" className="btnn-1">
-                    submit
+                  Edit & Save
                   </button>
                 </div>
               </div>
@@ -463,7 +471,7 @@ const RegisterAsFarmer = () => {
                 <div className="row ">
                   <div className="btnn  ">
                     <button type="submit" className="btnn-1 mb-5" onSubmit={handleSubmit}>
-                      submit
+                      Edit & Save
                     </button>
                   </div>
                 </div>
@@ -471,47 +479,10 @@ const RegisterAsFarmer = () => {
             )}
           </form>
 
-          {/*  
-          <div className="result">
-            {data.length < 1 && <>No data to show</>}
-            {data.length > 0 && (
-              <div className="table-responsive">
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Index</th>
-                      <th scope="col">FPO Name</th>
-                      <th scope="col">Name</th>
-                      <th scope="col">Phone No</th>
-                      <th scope="col">State</th>
-
-                      <th scope="col">District</th>
-                      <th scope="col">district</th>
-                      <th scope="col">Land Area</th>
-                      <th scope="col">crops Sowing</th>
-
-                      <th scope="col">cover Crops</th>
-                      <th scope="col">intercrops</th>
-                      <th scope="col">location</th>
-                      <th scope="col">objective</th>
-
-                      <th scope="col">nitrogenFixing</th>
-                      <th scope="col">villagePractices</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <Data data={data} />
-                  </tbody>
-                </table>
-              </div>
-            )}
-          </div>
-
-          */}
         </div>
       </div>
     </div>
-  );
-};
+  )
+}  
 
-export default RegisterAsFarmer;
+export default EditForm
