@@ -2,16 +2,25 @@ import React from "react";
 import "./Login.scss";
 import { useState } from "react";
 import { AiOutlineUser } from "react-icons/ai";
-import axios from "axios";
+// import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineEyeInvisible,AiOutlineEye } from "react-icons/ai";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
 
 const Login = () => {
+
+
+  const auth = getAuth();
   const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  
   // console.log({email,password})
   // const [allEntry, setAllEntry] = useState([]);
+
+
   const [passwordType, setPasswordType] = useState("password");
 
 
@@ -28,26 +37,42 @@ const Login = () => {
   const submitForm = (e) => {
     e.preventDefault();
 
-    const loginData = {
-      email: email,
-      password: password,
-    };
-    axios
-      .post("https://reqres.in/api/login", loginData)
-      .then((response) => {
-        console.log(response);
-        localStorage.setItem("token", response.data.token);
-        navigate("/RegisterAsFarmer");
-        alert("success");
+    // const loginData = {
+    //   email: email,
+    //   password: password,
+    // };
 
-        // console.log(name, location, phone, email, password);
-      })
-      .catch((error) => {
-        console.log(error);
-        alert("fail");
-      });
+    signInWithEmailAndPassword(auth, email, password)
+  .then((response) => {
+    // Signed in 
+    const user = response.user;
+    localStorage.setItem("token", user.accessToken);
+    navigate("/RegisterAsFarmer");
+    // ...
+  })
+  .catch((error) => {
+    // const errorCode = error.code;
+    // const errorMessage = error.message;
+    console.log(error)
+  });
 
-    console.log(loginData);
+
+    // axios
+    //   .post("https://reqres.in/api/login", loginData)
+    //   .then((response) => {
+    //     console.log(response);
+    //     localStorage.setItem("token", response.data.token);
+    //     navigate("/RegisterAsFarmer");
+    //     alert("success");
+
+    //     // console.log(name, location, phone, email, password);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //     alert("fail");
+    //   });
+
+    // console.log(loginData);
     setEmail("");
     setPassword("");
   };
@@ -86,7 +111,7 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     value={password}
                     name="password"
-                    class="form-control p-2 outline"
+                    className="form-control p-2 outline"
                     placeholder="Password"
                   />
                   <div className="">

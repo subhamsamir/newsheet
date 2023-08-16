@@ -3,7 +3,15 @@ import { useState } from "react";
 import "./SignUp.scss";
 import { AiOutlineUser } from "react-icons/ai";
 
-import axios from "axios";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+ import {apppp} from "./firebase"
+// import { ContactsOutlined } from "@mui/icons-material";
+// import { Phone } from "@mui/icons-material";
+
+const auth = getAuth(apppp);
+console.log(auth)
+
+
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -12,27 +20,36 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const SignUpSubmitHandler = (e) => {
+  const SignUpSubmitHandler = async (e) => {
     e.preventDefault();
-    console.log(name, location, phone, email, password);
+    try{  
+    createUserWithEmailAndPassword(auth,email,password,location,phone).then((value)=>console.log(value))
+    
+  } catch (error){
+    console.error (error.massage)
+  }
 
-    const signUpData = {
-      name,
-      location,
-      phone,
-      email,
-      password,
-    };
 
-    axios
-      .post("https://sheetdb.io/api/v1/jzh5le0t0227h", signUpData)
-      .then((response) => {
-        console.log(response);
-        // console.log(name, location, phone, email, password);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+
+    // console.log({name, location, phone, email, password});
+
+    // const signUpData = {
+    //   name,
+    //   location,
+    //   phone,
+    //   email,
+    //   password,
+    // };
+
+    // axios
+    //   .post("https://sheetdb.io/api/v1/jzh5le0t0227h", signUpData)
+    //   .then((response) => {
+    //     console.log(response);
+    //     // console.log(name, location, phone, email, password);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   };
 
   return (
