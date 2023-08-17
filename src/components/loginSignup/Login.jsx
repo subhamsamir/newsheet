@@ -6,12 +6,14 @@ import { AiOutlineUser } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineEyeInvisible,AiOutlineEye } from "react-icons/ai";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {apppp} from "./firebase"
+// import { Alert } from "@mui/material";
 
 
 const Login = () => {
 
+  const auth = getAuth(apppp);
 
-  const auth = getAuth();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -45,6 +47,7 @@ const Login = () => {
     signInWithEmailAndPassword(auth, email, password)
   .then((response) => {
     // Signed in 
+    console.log(response)
     const user = response.user;
     localStorage.setItem("token", user.accessToken);
     navigate("/RegisterAsFarmer");
@@ -53,7 +56,8 @@ const Login = () => {
   .catch((error) => {
     // const errorCode = error.code;
     // const errorMessage = error.message;
-    console.log(error)
+
+    console.log(error);
   });
 
 

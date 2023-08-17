@@ -2,24 +2,24 @@ import React from "react";
 import "./RegisterAsFarmer.scss";
 import Navbar from "./Navbar";
 
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { apppp } from "./firebase";
 
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-// import {useEffect } from "react";
-import axios from "axios";
+
+// import axios from "axios";
+
+const firestore = getFirestore(apppp);
 
 const RegisterAsFarmer = () => {
-  const navigate =useNavigate()
+  const navigate = useNavigate();
 
-  useEffect(()=>{
-
-    if(!localStorage.getItem('token')){
-
-      navigate('/login')
-    
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
     }
-  },[])
-
+  }, []);
 
   // form states
   const [fpoName, setFpoName] = useState("");
@@ -46,18 +46,11 @@ const RegisterAsFarmer = () => {
   const [agroforestrySystem, setAgroforestrySystem] = useState("");
   const [treesAndSpecies, setTreesAndSpecies] = useState("");
 
-  // retrived data state
-  // const [data, setData] = useState([]);
-
   // submit event
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-
-    
-
-    // our object to pass
-    const data = {
+    addDoc(collection(firestore, "Farmer_data"), {
       fpoName,
       name,
       PhoneNo,
@@ -75,83 +68,93 @@ const RegisterAsFarmer = () => {
       agroforestryArea,
       agroforestrySystem,
       treesAndSpecies,
-    };
-    axios
-      .post(
-        "https://dcdataapp-default-rtdb.firebaseio.com/farmerReg.json",
-   
-        // "https://sheetdb.io/api/v1/jzh5le0t0227h",
-        data
-      )
-      .then((response) => {
-        console.log(response);
-        console.log(
-          fpoName,
-          name,
-          PhoneNo,
-          State,
-          district,
-          village,
-          LandArea,
-          cropsSowing,
-          coverCrops,
-          intercrops,
-          location,
-          objective,
-          nitrogenFixing,
-          villagePractices,
-          agroforestryArea,
-          agroforestrySystem,
-          treesAndSpecies
-        );
-        setFpoName("");
-        setName("");
-        setPhoneNo("");
-        setState("");
+    })
+      .then((result) => console.log(result))
 
-        setDistrict("");
-        setVillage("");
-        setLandArea("");
-        setCropsSowing("");
+      .catch((error) => console.log(error));
 
-        setCoverCrops("");
-        setIntercrops("");
-        setLocation("");
-        setObjective("");
+    // const handleSubmit = (e) => {
+    //   e.preventDefault();
 
-        setNitrogenFixing("");
-        setVillagePractices("");
+    //   // our object to pass
+    //   const data = {
+    //     fpoName,
+    //     name,
+    //     PhoneNo,
+    //     State,
+    //     district,
+    //     village,
+    //     LandArea,
+    //     cropsSowing,
+    //     coverCrops,
+    //     intercrops,
+    //     location,
+    //     objective,
+    //     nitrogenFixing,
+    //     villagePractices,
+    //     agroforestryArea,
+    //     agroforestrySystem,
+    //     treesAndSpecies,
+    //   };
 
-        setAgroforestryArea("");
-        setAgroforestrySystem("");
-        setTreesAndSpecies("");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    //   axios
+    //     .post(
+    //       "https://dcdataapp-default-rtdb.firebaseio.com/farmerReg.json",
+    //       data
+    //     )
+    //     .then((response) => {
+    //       console.log(response);
+    //       console.log(
+    //         fpoName,
+    //         name,
+    //         PhoneNo,
+    //         State,
+    //         district,
+    //         village,
+    //         LandArea,
+    //         cropsSowing,
+    //         coverCrops,
+    //         intercrops,
+    //         location,
+    //         objective,
+    //         nitrogenFixing,
+    //         villagePractices,
+    //         agroforestryArea,
+    //         agroforestrySystem,
+    //         treesAndSpecies
+    //       );
 
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     });
 
-      
+    setFpoName("");
+    setName("");
+    setPhoneNo("");
+    setState("");
+
+    setDistrict("");
+    setVillage("");
+    setLandArea("");
+    setCropsSowing("");
+
+    setCoverCrops("");
+    setIntercrops("");
+    setLocation("");
+    setObjective("");
+
+    setNitrogenFixing("");
+    setVillagePractices("");
+
+    setAgroforestryArea("");
+    setAgroforestrySystem("");
+    setTreesAndSpecies("");
   };
 
-  // getting data function
-  // const getData = () => {
-  //   axios
-  //     // .get("https://sheet.best/api/sheets/0fdf7336-2b26-4d1d-8bc6-5f81e71efb02")
-  //     .get("https://sheetdb.io/api/v1/jzh5le0t0227h")
-
-  //     .then((response) => {
-  //       setData(response.data);
-  //     });
-  // };
-
-  // // triggering function
-  // useEffect(() => {
-  //   getData();
-  // }, [data]);
   return (
     <div className=" register ">
-    <Navbar />
+      <Navbar />
       <div className="row justify-content-center align-items-center ">
         <div className="col-10">
           <form
@@ -437,7 +440,9 @@ const RegisterAsFarmer = () => {
                       aria-label=".form-select-lg example"
                       onChange={(e) => setAgroforestrySystem(e.target.value)}
                     >
-                      <option selected>---: Open this select menu :---</option>
+                      <option defaultValue>
+                        ---: Open this select menu :---
+                      </option>
                       <option value="silvopasture">silvopasture</option>
                       <option value="Alley cropping">Alley cropping</option>
                       <option value="forest farming">forest farming</option>
@@ -462,7 +467,11 @@ const RegisterAsFarmer = () => {
 
                 <div className="row ">
                   <div className="btnn  ">
-                    <button type="submit" className="btnn-1 mb-5" onSubmit={handleSubmit}>
+                    <button
+                      type="submit"
+                      className="btnn-1 mb-5"
+                      onSubmit={handleSubmit}
+                    >
                       submit
                     </button>
                   </div>
