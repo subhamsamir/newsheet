@@ -8,7 +8,7 @@ import { apppp } from "./firebase";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-// import axios from "axios";
+import axios from "axios";
 
 const firestore = getFirestore(apppp);
 
@@ -73,61 +73,62 @@ const RegisterAsFarmer = () => {
 
       .catch((error) => console.log(error));
 
-    // const handleSubmit = (e) => {
-    //   e.preventDefault();
 
-    //   // our object to pass
-    //   const data = {
-    //     fpoName,
-    //     name,
-    //     PhoneNo,
-    //     State,
-    //     district,
-    //     village,
-    //     LandArea,
-    //     cropsSowing,
-    //     coverCrops,
-    //     intercrops,
-    //     location,
-    //     objective,
-    //     nitrogenFixing,
-    //     villagePractices,
-    //     agroforestryArea,
-    //     agroforestrySystem,
-    //     treesAndSpecies,
-    //   };
 
-    //   axios
-    //     .post(
-    //       "https://dcdataapp-default-rtdb.firebaseio.com/farmerReg.json",
-    //       data
-    //     )
-    //     .then((response) => {
-    //       console.log(response);
-    //       console.log(
-    //         fpoName,
-    //         name,
-    //         PhoneNo,
-    //         State,
-    //         district,
-    //         village,
-    //         LandArea,
-    //         cropsSowing,
-    //         coverCrops,
-    //         intercrops,
-    //         location,
-    //         objective,
-    //         nitrogenFixing,
-    //         villagePractices,
-    //         agroforestryArea,
-    //         agroforestrySystem,
-    //         treesAndSpecies
-    //       );
+    
+      // our object to pass
+      const data = {
+        fpoName,
+        name,
+        PhoneNo,
+        State,
+        district,
+        village,
+        LandArea,
+        cropsSowing,
+        coverCrops,
+        intercrops,
+        location,
+        objective,
+        nitrogenFixing,
+        villagePractices,
+        agroforestryArea,
+        agroforestrySystem,
+        treesAndSpecies,
+      };
 
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     });
+      axios
+        .post(
+          "https://dcdataapp-default-rtdb.firebaseio.com/farmerReg.json",
+          data
+        )
+        .then((response) => {
+          console.log(response);
+          console.log(
+            fpoName,
+            name,
+            PhoneNo,
+            State,
+            district,
+            village,
+            LandArea,
+            cropsSowing,
+            coverCrops,
+            intercrops,
+            location,
+            objective,
+            nitrogenFixing,
+            villagePractices,
+            agroforestryArea,
+            agroforestrySystem,
+            treesAndSpecies
+          );
+
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
 
     setFpoName("");
     setName("");
@@ -150,6 +151,8 @@ const RegisterAsFarmer = () => {
     setAgroforestryArea("");
     setAgroforestrySystem("");
     setTreesAndSpecies("");
+
+
   };
 
   return (
