@@ -6,7 +6,7 @@ import "./Navbar.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({name}) => {
   const [pupup,setPopup ] = useState(false);
   const navigate =useNavigate()
 
@@ -31,7 +31,7 @@ const Navbar = () => {
       </ul>
     
       { pupup  ?  <div className="userPopup">
-      <p>sandeep singh</p>
+      <p>{name}</p>
       <button onClick={logout}>logout</button>
      </div> : null
      

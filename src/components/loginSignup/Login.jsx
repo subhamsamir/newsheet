@@ -7,59 +7,62 @@ import { useNavigate } from "react-router-dom";
 import { AiOutlineEyeInvisible,AiOutlineEye } from "react-icons/ai";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import {apppp} from "./firebase"
-// import { Alert } from "@mui/material";
-
+import { useUserContext } from './UserProvider';
 
 const Login = () => {
 
   const auth = getAuth(apppp);
-
   const navigate = useNavigate();
-
+  const { setUserId } = useUserContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   
   // console.log({email,password})
   // const [allEntry, setAllEntry] = useState([]);
 
-
   const [passwordType, setPasswordType] = useState("password");
-
-
-
-
   const togglePassword = () => {
     if (passwordType === "password") {
       setPasswordType("text");
       return;
     }
     setPasswordType("password");
-  };
+  }; 
   
   const submitForm = (e) => {
     e.preventDefault();
+    signInWithEmailAndPassword(auth, email, password)
+    .then((response) => {
+      console.log(response)
+      const user = response.user;
+      // console.log(userId)
+      const uid = user.uid;
+      localStorage.setItem("token", user.accessToken);
+      return uid;
+  
+      
+      
+    
 
-    // const loginData = {
+    }).then((response)=>{
+      setUserId(response)
+      console.log(response)
+      navigate("/RegisterAsFarmer");
+    })
+
+    .catch((error) => {
+      console.log(error);
+    });
+    setEmail("");
+    setPassword("");
+ 
+
+
+
+   // const loginData = {
     //   email: email,
     //   password: password,
     // };
-
-    signInWithEmailAndPassword(auth, email, password)
-  .then((response) => {
-    // Signed in 
-    console.log(response)
-    const user = response.user;
-    localStorage.setItem("token", user.accessToken);
-    navigate("/RegisterAsFarmer");
-    // ...
-  })
-  .catch((error) => {
-    // const errorCode = error.code;
-    // const errorMessage = error.message;
-
-    console.log(error);
-  });
-
 
     // axios
     //   .post("https://reqres.in/api/login", loginData)
@@ -77,8 +80,7 @@ const Login = () => {
     //   });
 
     // console.log(loginData);
-    setEmail("");
-    setPassword("");
+
   };
   return (
     <div className="container-fluid loginBg ">

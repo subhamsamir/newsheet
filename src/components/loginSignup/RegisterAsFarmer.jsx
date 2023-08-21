@@ -9,10 +9,11 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
-
+import { useUserContext } from './UserProvider';
 const firestore = getFirestore(apppp);
 
 const RegisterAsFarmer = () => {
+  const { userId } = useUserContext();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -48,9 +49,11 @@ const RegisterAsFarmer = () => {
 
   // submit event
 
+   // data store in firestore database
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    addDoc(collection(firestore, "Farmer_data"), {
+    addDoc(collection(firestore, `Farmer_data/${userId}/Farmer_reg`), {
       fpoName,
       name,
       PhoneNo,
@@ -70,12 +73,12 @@ const RegisterAsFarmer = () => {
       treesAndSpecies,
     })
       .then((result) => console.log(result))
-
+    
       .catch((error) => console.log(error));
 
 
 
-    
+    // data store in real time database
       // our object to pass
       const data = {
         fpoName,
@@ -96,7 +99,28 @@ const RegisterAsFarmer = () => {
         agroforestrySystem,
         treesAndSpecies,
       };
-
+      setFpoName("");
+      setName("");
+      setPhoneNo("");
+      setState("");
+  
+      setDistrict("");
+      setVillage("");
+      setLandArea("");
+      setCropsSowing("");
+  
+      setCoverCrops("");
+      setIntercrops("");
+      setLocation("");
+      setObjective("");
+  
+      setNitrogenFixing("");
+      setVillagePractices("");
+  
+      setAgroforestryArea("");
+      setAgroforestrySystem("");
+      setTreesAndSpecies("");
+      setName(data.name);
       axios
         .post(
           "https://dcdataapp-default-rtdb.firebaseio.com/farmerReg.json",
@@ -130,34 +154,14 @@ const RegisterAsFarmer = () => {
         });
 
 
-    setFpoName("");
-    setName("");
-    setPhoneNo("");
-    setState("");
 
-    setDistrict("");
-    setVillage("");
-    setLandArea("");
-    setCropsSowing("");
-
-    setCoverCrops("");
-    setIntercrops("");
-    setLocation("");
-    setObjective("");
-
-    setNitrogenFixing("");
-    setVillagePractices("");
-
-    setAgroforestryArea("");
-    setAgroforestrySystem("");
-    setTreesAndSpecies("");
 
 
   };
 
   return (
     <div className=" register ">
-      <Navbar />
+      <Navbar name={name} />
       <div className="row justify-content-center align-items-center ">
         <div className="col-10">
           <form

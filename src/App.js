@@ -9,20 +9,19 @@ import Contact from "./components/loginSignup/Contact";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+
+
+
+
 function App() {
   return (
     <div className=" app">
-
-    
       <BrowserRouter>
-
-        <Routes>
-
+       <Routes>
         <Route path="/" element={<Login />}></Route>
          <Route path="/login" element={<Login />}></Route>
          <Route path="/signup" element={<SignUp />}></Route>
          <Route path="/EnterNumber" element={<EnterNumber />}></Route>
-         
          <Route path="/ResetPassword" element={<ResetPassword />}></Route>
          <Route path="/RegisterAsFarmer" element={<RegisterAsFarmer />}></Route>
          <Route path="/EditForm" element={<EditForm />}></Route>
@@ -30,9 +29,39 @@ function App() {
         </Routes>
       </BrowserRouter>
     </div>
+   
   );
 }
 
-export default App;
+export default App 
+
+
+
+
+
+
+
+
+
+
+// import { createContext, useContext, useState } from 'react';
+
+// export const UserProvider = ({ children }) => {
+//     const [user, setUser] = useState(null);
+
+//     return (
+//       <UserContext.Provider value={{ user, setUser }}>
+//         {children}
+//       </UserContext.Provider>
+//     );
+// }
+
+
+
+// const UserContext = createContext();
+
+// import React from 'react'
+
+// export const useUserContext = () => useContext(UserContext);
 
 

@@ -4,14 +4,13 @@ import "./SignUp.scss";
 import { AiOutlineUser } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
- import {apppp} from "./firebase"
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { apppp } from "./firebase";
 // import { ContactsOutlined } from "@mui/icons-material";
 // import { Phone } from "@mui/icons-material";
 
 const auth = getAuth(apppp);
-
-
-
+const firestore = getFirestore(apppp);
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -19,26 +18,35 @@ const SignUp = () => {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  
   const navigate = useNavigate();
 
   const SignUpSubmitHandler = async (e) => {
     e.preventDefault();
-    try{  
-    createUserWithEmailAndPassword(auth,email,password,location,phone)
-    .then((value)=>console.log(value))
-    .catch((err)=>console.log(err))
-    
-  } catch (error){
-    console.error (error.massage)
-  }
+    try {
+      await addDoc(collection(firestore, "Users"), {
+        name,
+        location,
+        phone,
+        email,
+      }).then((response)=>console.log(response));
+      await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password,
+        location,
+        phone
+      );
+    } catch (error) {
+      console.error(error.message);
+    }
 
-  setName("")
-  setLocation("")
-  setPhone("")
-  setEmail("")
-  setPassword("")
-  navigate("/Login");
-
+    setName("");
+    setLocation("");
+    setPhone("");
+    setEmail("");
+    setPassword("");
+    navigate("/Login");
 
     // console.log({name, location, phone, email, password});
 
