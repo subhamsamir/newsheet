@@ -53,7 +53,7 @@ const RegisterAsFarmer = () => {
   const [agroforestry, setAgroforestry] = useState(false);
 
   const [agroforestryArea, setAgroforestryArea] = useState("");
-  const [agroforestrySystem, setAgroforestrySystem] = useState("");
+  const [agroforestrySystem, setAgroforestrySystem] = useState("defaultValue");
   const [treesAndSpecies, setTreesAndSpecies] = useState("");
 
   // submit event
@@ -125,9 +125,9 @@ const RegisterAsFarmer = () => {
     setVillagePractices("");
 
     setAgroforestryArea("");
-    setAgroforestrySystem("");
+    setAgroforestrySystem("defaultValue");
     setTreesAndSpecies("");
-    setName(data.name);
+
     axios
       .post(
         "https://dcdataapp-default-rtdb.firebaseio.com/farmerReg.json",
