@@ -24,7 +24,7 @@ const Navbar = ({name}) => {
       <div className="logoText">Carbon Credit</div>
       <ul className="nav-links">
         <li><Link to="/RegisterAsFarmer"><AiOutlineHome /></Link></li>
-        <li><Link to="/EditForm">Edit-Form</Link></li>
+        <li><Link to="/EditByNumber">Edit-Form</Link></li>
         <li><Link to="/Contact">Contact</Link></li>
         <li className="user" onClick={()=>setPopup(!pupup)}><FaUserCircle /></li>
         

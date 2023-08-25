@@ -7,19 +7,36 @@ import { apppp } from "./firebase";
 
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { getAuth,onAuthStateChanged  } from "firebase/auth";
 import axios from "axios";
 import { useUserContext } from './UserProvider';
 const firestore = getFirestore(apppp);
+const auth = getAuth(apppp);
+
+
 
 const RegisterAsFarmer = () => {
+  const [userName,setUuserName] =useState()
   const { userId } = useUserContext();
   const navigate = useNavigate();
+  
 
   useEffect(() => {
     if (!localStorage.getItem("token")) {
       navigate("/login");
+
     }
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+
+      const email =user
+      setUuserName(email.auth.currentUser.email)
+    
+      } else {
+    
+      }
+    });
   }, []);
 
   // form states
@@ -161,7 +178,7 @@ const RegisterAsFarmer = () => {
 
   return (
     <div className=" register ">
-      <Navbar name={name} />
+      <Navbar name={userName} />
       <div className="row justify-content-center align-items-center ">
         <div className="col-10">
           <form
@@ -382,7 +399,7 @@ const RegisterAsFarmer = () => {
               </div>
 
               <div className="col-md-4   mb-3">
-                <label htmlFor="validationCustom015">
+                <label htmlFor="farming-area">
                   Does the area (farming)have agroforestry
                 </label>
                 <div id="farming-area">
@@ -424,13 +441,13 @@ const RegisterAsFarmer = () => {
               <div className="popup">
                 <div className="row rowww">
                   <div className="col-md-4   mb-3">
-                    <label htmlFor="validationCustom015">
+                    <label htmlFor="areaOfAgroforestry">
                       Area of Agroforestry (acres)
                     </label>
                     <input
                       type="text"
                       className="form-control"
-                      id="validationCustom015"
+                      id="areaOfAgroforestry"
                       placeholder="Enter Area of Agroforestry"
                       value={agroforestryArea}
                       onChange={(e) => setAgroforestryArea(e.target.value)}

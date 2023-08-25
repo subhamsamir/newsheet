@@ -39,10 +39,6 @@ const Login = () => {
       const uid = user.uid;
       localStorage.setItem("token", user.accessToken);
       return uid;
-  
-      
-      
-    
 
     }).then((response)=>{
       setUserId(response)

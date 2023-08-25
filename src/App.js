@@ -6,6 +6,7 @@ import RegisterAsFarmer from "./components/loginSignup/RegisterAsFarmer";
 import ResetPassword from "./components/loginSignup/ResetPassword";
 import EditForm from "./components/loginSignup/EditForm";
 import Contact from "./components/loginSignup/Contact";
+import EditByNumber from "./components/loginSignup/EditByNumber";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -26,6 +27,7 @@ function App() {
          <Route path="/RegisterAsFarmer" element={<RegisterAsFarmer />}></Route>
          <Route path="/EditForm" element={<EditForm />}></Route>
          <Route path="/Contact" element={<Contact />}></Route>
+         <Route path="/EditByNumber" element={<EditByNumber />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
@@ -43,25 +45,5 @@ export default App
 
 
 
-
-// import { createContext, useContext, useState } from 'react';
-
-// export const UserProvider = ({ children }) => {
-//     const [user, setUser] = useState(null);
-
-//     return (
-//       <UserContext.Provider value={{ user, setUser }}>
-//         {children}
-//       </UserContext.Provider>
-//     );
-// }
-
-
-
-// const UserContext = createContext();
-
-// import React from 'react'
-
-// export const useUserContext = () => useContext(UserContext);
 
 
