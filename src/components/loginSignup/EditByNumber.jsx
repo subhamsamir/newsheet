@@ -17,7 +17,7 @@ const EditByNumber = () => {
         <div className=" row  enterNumber-bg ">
           <div className="col-sm-6 offset-sm-3 col-md-6 offset-md-3 col-lg-4 offset-lg-4  EnterNumberbox p-4">
             <h4 className="text-center mt-2">
-              {" "}
+        
               Enter your FPO Name and Number
             </h4>
             <form

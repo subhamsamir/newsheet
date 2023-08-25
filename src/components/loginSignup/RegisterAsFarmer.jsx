@@ -7,34 +7,26 @@ import { apppp } from "./firebase";
 
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { getAuth,onAuthStateChanged  } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import axios from "axios";
-import { useUserContext } from './UserProvider';
+import { useUserContext } from "./UserProvider";
 const firestore = getFirestore(apppp);
 const auth = getAuth(apppp);
 
-
-
 const RegisterAsFarmer = () => {
-  const [userName,setUuserName] =useState()
+  const [userName, setUuserName] = useState();
   const { userId } = useUserContext();
   const navigate = useNavigate();
-  
 
   useEffect(() => {
     if (!localStorage.getItem("token")) {
       navigate("/login");
-
     }
 
     onAuthStateChanged(auth, (user) => {
       if (user) {
-
-      const email =user
-      setUuserName(email.auth.currentUser.email)
-    
-      } else {
-    
+        const email = user;
+        setUuserName(email.auth.currentUser.email);
       }
     });
   }, []);
@@ -66,7 +58,7 @@ const RegisterAsFarmer = () => {
 
   // submit event
 
-   // data store in firestore database
+  // data store in firestore database
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -90,90 +82,82 @@ const RegisterAsFarmer = () => {
       treesAndSpecies,
     })
       .then((result) => console.log(result))
-    
+
       .catch((error) => console.log(error));
 
-
-
     // data store in real time database
-      // our object to pass
-      const data = {
-        fpoName,
-        name,
-        PhoneNo,
-        State,
-        district,
-        village,
-        LandArea,
-        cropsSowing,
-        coverCrops,
-        intercrops,
-        location,
-        objective,
-        nitrogenFixing,
-        villagePractices,
-        agroforestryArea,
-        agroforestrySystem,
-        treesAndSpecies,
-      };
-      setFpoName("");
-      setName("");
-      setPhoneNo("");
-      setState("");
-  
-      setDistrict("");
-      setVillage("");
-      setLandArea("");
-      setCropsSowing("");
-  
-      setCoverCrops("");
-      setIntercrops("");
-      setLocation("");
-      setObjective("");
-  
-      setNitrogenFixing("");
-      setVillagePractices("");
-  
-      setAgroforestryArea("");
-      setAgroforestrySystem("");
-      setTreesAndSpecies("");
-      setName(data.name);
-      axios
-        .post(
-          "https://dcdataapp-default-rtdb.firebaseio.com/farmerReg.json",
-          data
-        )
-        .then((response) => {
-          console.log(response);
-          console.log(
-            fpoName,
-            name,
-            PhoneNo,
-            State,
-            district,
-            village,
-            LandArea,
-            cropsSowing,
-            coverCrops,
-            intercrops,
-            location,
-            objective,
-            nitrogenFixing,
-            villagePractices,
-            agroforestryArea,
-            agroforestrySystem,
-            treesAndSpecies
-          );
+    // our object to pass
+    const data = {
+      fpoName,
+      name,
+      PhoneNo,
+      State,
+      district,
+      village,
+      LandArea,
+      cropsSowing,
+      coverCrops,
+      intercrops,
+      location,
+      objective,
+      nitrogenFixing,
+      villagePractices,
+      agroforestryArea,
+      agroforestrySystem,
+      treesAndSpecies,
+    };
+    setFpoName("");
+    setName("");
+    setPhoneNo("");
+    setState("");
 
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    setDistrict("");
+    setVillage("");
+    setLandArea("");
+    setCropsSowing("");
 
+    setCoverCrops("");
+    setIntercrops("");
+    setLocation("");
+    setObjective("");
 
+    setNitrogenFixing("");
+    setVillagePractices("");
 
-
-
+    setAgroforestryArea("");
+    setAgroforestrySystem("");
+    setTreesAndSpecies("");
+    setName(data.name);
+    axios
+      .post(
+        "https://dcdataapp-default-rtdb.firebaseio.com/farmerReg.json",
+        data
+      )
+      .then((response) => {
+        console.log(response);
+        console.log(
+          fpoName,
+          name,
+          PhoneNo,
+          State,
+          district,
+          village,
+          LandArea,
+          cropsSowing,
+          coverCrops,
+          intercrops,
+          location,
+          objective,
+          nitrogenFixing,
+          villagePractices,
+          agroforestryArea,
+          agroforestrySystem,
+          treesAndSpecies
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
