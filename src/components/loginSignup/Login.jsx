@@ -43,11 +43,13 @@ const Login = () => {
     }).then((response)=>{
       setUserId(response)
       console.log(response)
+      alert("Welcome to CarbonFarming Family")
       navigate("/FarmerOnBoardinng");
     })
 
     .catch((error) => {
       console.log(error);
+      alert("something wrong")
     });
     setEmail("");
     setPassword("");

@@ -26,8 +26,16 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const SignUpSubmitHandler = async (e) => {
-    e.preventDefault();
+
     try {
+
+      await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password,
+        location,
+        phone
+      )
       await addDoc(collection(firestore, "Users"), {
         name,
         location,
@@ -37,16 +45,24 @@ const SignUp = () => {
         district,
         tehsil,
         village
-      }).then((response)=>console.log(response));
-      await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password,
-        location,
-        phone
-      );
+      }).then((response)=>alert("your account is created"))
+
     } catch (error) {
-      console.error(error.message);
+      if(error){
+        alert("email is already registered")
+        setName("");
+        setLocation("");
+        setState("");
+        setDistrict("");
+        setTehsile("");
+        setVillage("");
+        setPhone("");
+        setEmail("");
+        setPassword("");
+        
+        return;
+      }
+      
     }
     setName("");
     setLocation("");
@@ -58,6 +74,7 @@ const SignUp = () => {
     setEmail("");
     setPassword("");
     navigate("/Login");
+    
 
     // console.log({name, location, phone, email, password});
 

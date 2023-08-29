@@ -1,16 +1,14 @@
 import React from "react";
 import { useState } from "react";
 import Navbar from "./Navbar";
-import "./FarmerOnBoardinng.scss"
-
+import "./FarmerOnBoardinng.scss";
+import { useUserContext } from "./UserProvider";
+import axios from "axios";
 
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { apppp } from "./firebase";
 
-
 const firestore = getFirestore(apppp);
-
-
 
 const FarmerOnBoardinng = () => {
     const [farmerName, setFarmerName] = useState("");
@@ -26,30 +24,45 @@ const FarmerOnBoardinng = () => {
     const [isIntercropping, setIsIntercropping] = useState(false);
     const [isBioFertilizers, setIsBioFertilizers] = useState(false);
     const [isAgroforestry, setIsAgroforestry] = useState(false);
-;
 
+    const { userId } = useUserContext();
 
     const FarmerOnBoardinngSubmit = async (e) => {
         e.preventDefault();
         try {
-            await addDoc(collection(firestore, "FarmerOnBoardinng"), {
-                farmerName,
-                address,
-                phoneNumber,
-                landHolding,
-                thisSeason,
-                previousSeason,
-                aadharPanCard,
-                isCropBeforeSowing,
-                isCoverCropping,
-                isIntercropping,
-                isBioFertilizers,
-                isAgroforestry
-               
-            }).then((response) => console.log(response));
-
+            await addDoc(
+                collection(firestore, `FarmerOnBoardinng/${userId}/Farmer_reg`),
+                {
+                    farmerName,
+                    address,
+                    phoneNumber,
+                    landHolding,
+                    thisSeason,
+                    previousSeason,
+                    aadharPanCard,
+                    isCropBeforeSowing,
+                    isCoverCropping,
+                    isIntercropping,
+                    isBioFertilizers,
+                    isAgroforestry,
+                }
+            ).then((response) => alert("form submitted"));
         } catch (error) {
             console.error(error.message);
+            alert("something wrong, try again")
+            setFarmerName("");
+            setAddress("");
+            setPhoneNumber("");
+            setLandHolding("");
+            setThisSeason("");
+            setPreviousSeason("");
+            setAadharPanCard("");
+            setIsCropBeforeSowing("");
+            setIsCoverCropping("");
+            setIsIntercropping("");
+            setIsBioFertilizers("");
+            setIsAgroforestry("");
+            return;
         }
         setFarmerName("");
         setAddress("");
@@ -64,7 +77,33 @@ const FarmerOnBoardinng = () => {
         setIsBioFertilizers("");
         setIsAgroforestry("");
 
-  
+        const data = {
+            farmerName,
+            address,
+            phoneNumber,
+            landHolding,
+            thisSeason,
+            previousSeason,
+            aadharPanCard,
+            isCropBeforeSowing,
+            isCoverCropping,
+            isIntercropping,
+            isBioFertilizers,
+            isAgroforestry,
+        };
+
+        axios
+            .post(
+                "https://dcdataapp-default-rtdb.firebaseio.com/farmerReg.json",
+                data
+            )
+            .then((response) => {
+                console.log(response);
+                console.log();
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     };
 
     return (
@@ -198,7 +237,9 @@ const FarmerOnBoardinng = () => {
 
                             <div className="row ">
                                 <div className="col-10 offset-1">
-                                    <div><span>Farming Practices</span></div>
+                                    <div>
+                                        <span>Farming Practices</span>
+                                    </div>
                                     <div className="form-check">
                                         <input
                                             className="form-check-input form-input1"
@@ -207,8 +248,12 @@ const FarmerOnBoardinng = () => {
                                             id="flexCheckDefault1"
                                             onChange={(e) => setIsCropBeforeSowing(true)}
                                         />
-                                        <label className="form-check-label labels" htmlFor="flexCheckDefault1">
-                                            N<sub>2</sub>(Nitrogen) Fixation crop before sowing of any crop
+                                        <label
+                                            className="form-check-label labels"
+                                            htmlFor="flexCheckDefault1"
+                                        >
+                                            N<sub>2</sub>(Nitrogen) Fixation crop before sowing of any
+                                            crop
                                         </label>
                                     </div>
                                     <div className="form-check">
@@ -219,7 +264,10 @@ const FarmerOnBoardinng = () => {
                                             id="flexCheckChecked2"
                                             onChange={(e) => setIsCoverCropping(true)}
                                         />
-                                        <label className="form-check-label labels" htmlFor="flexCheckChecked2">
+                                        <label
+                                            className="form-check-label labels"
+                                            htmlFor="flexCheckChecked2"
+                                        >
                                             Cover-cropping
                                         </label>
                                     </div>
@@ -231,7 +279,10 @@ const FarmerOnBoardinng = () => {
                                             id="flexCheckDefault3"
                                             onChange={(e) => setIsIntercropping(true)}
                                         />
-                                        <label className="form-check-label labels" htmlFor="flexCheckDefault3">
+                                        <label
+                                            className="form-check-label labels"
+                                            htmlFor="flexCheckDefault3"
+                                        >
                                             Intercropping
                                         </label>
                                     </div>
@@ -243,7 +294,10 @@ const FarmerOnBoardinng = () => {
                                             id="flexCheckDefault4"
                                             onChange={(e) => setIsBioFertilizers(true)}
                                         />
-                                        <label className="form-check-label labels" htmlFor="flexCheckDefault4">
+                                        <label
+                                            className="form-check-label labels"
+                                            htmlFor="flexCheckDefault4"
+                                        >
                                             Use of Vermi-compost and other bio-fertilizers
                                         </label>
                                     </div>
@@ -255,8 +309,12 @@ const FarmerOnBoardinng = () => {
                                             id="flexCheckDefault5"
                                             onChange={(e) => setIsAgroforestry(true)}
                                         />
-                                        <label className="form-check-label labels" htmlFor="flexCheckDefault5">
-                                            Agroforestry (planting in the fields while cropping farming)
+                                        <label
+                                            className="form-check-label labels"
+                                            htmlFor="flexCheckDefault5"
+                                        >
+                                            Agroforestry (planting in the fields while cropping
+                                            farming)
                                         </label>
                                     </div>
                                 </div>
