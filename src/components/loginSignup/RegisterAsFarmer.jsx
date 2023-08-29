@@ -62,6 +62,7 @@ const RegisterAsFarmer = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(userId)
     addDoc(collection(firestore, `Farmer_data/${userId}/Farmer_reg`), {
       fpoName,
       name,

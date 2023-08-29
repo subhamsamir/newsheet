@@ -43,7 +43,7 @@ const Login = () => {
     }).then((response)=>{
       setUserId(response)
       console.log(response)
-      navigate("/RegisterAsFarmer");
+      navigate("/FarmerOnBoardinng");
     })
 
     .catch((error) => {
@@ -80,8 +80,8 @@ const Login = () => {
   };
   return (
     <div className="container-fluid loginBg ">
-      <div className=" row login-background ">
-        <div className="col-sm-6 offset-sm-3 col-md-6 offset-md-3 col-lg-4 offset-lg-4 loginBox p-2 mt-5">
+      <div className=" row  d-flex justify-content-center align-items-center mt-5 mt-sm-5 ">
+        <div className="col-8  col-sm-8 col-md-4 loginBox p-2 mt-5 mt-sm-5 ">
           <div className="logo  ">
             <AiOutlineUser />
           </div>
@@ -92,8 +92,8 @@ const Login = () => {
             onSubmit={submitForm}
           >
             <div className="row ">
-              <div className="col-10 offset-1 mb-3">
-                <label htmlFor="email"> Email</label>
+              <div className="col-10 offset-1 mb-sm-2">
+                <label  htmlFor="email"> Email</label>
                 <input
                   type="email"
                   className="form-control p-2 outline"
@@ -105,7 +105,7 @@ const Login = () => {
               </div>
             </div>
             <div className="row ">
-              <div className="col-10 offset-1 mb-2">
+              <div className="col-10 offset-1 mb-sm-2">
                 <label htmlFor="password">Password</label>
                 <div className="input-group ">
                   <input
@@ -133,30 +133,30 @@ const Login = () => {
             </div>
 
             <div className="row">
-              <div className="col-6 offset-1 mb-4 ">
+              <div className="col-6 offset-1 mb-sm-2 ">
                 <input className="logincheckbox" type="checkbox" />
                 &nbsp;
-                <label htmlFor="vehicle2"> Remember Me</label>
+                <label className="check" htmlFor="vehicle2"> Remember Me</label>
               </div>
               <div className="col-5">
-                <a href="/EnterNumber" className="login-Forgot">
+                <a href="/EnterNumber" className="login-Forgot anchor">
                   Forgot password?
                 </a>
               </div>
             </div>
 
             <div className="row mt-2 ">
-              <div className="col-10 offset-1 mb-3 loginSubmit  ">
+              <div className="col-10 offset-1 mb-sm-2 loginSubmit  ">
                 <button type="submit" className="btn-primary ">
                   LogIn
                 </button>
               </div>
             </div>
             <div className="row">
-              <div className="col-8 offset-2 mb-3   ">
+              <div className="col-8 offset-2 mb-sm-2   ">
                 <p className="login-para">
                   Don't have an account?
-                  <a className="login-link" href="/signup">
+                  <a className="login-link anchor" href="/signup">
                     Sign Up!
                   </a>
                 </p>

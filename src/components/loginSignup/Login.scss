@@ -5,6 +5,12 @@
     // border: 1px solid black
 }
 
+@mixin mob {
+    @media (max-width:450px) {
+        @content;
+    }
+}
+
 .loginBg {
 
 
@@ -14,70 +20,127 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-color: rgb(161, 179, 179);
+    background-color: rgb(228, 236, 236);
+
+    @include mob {
+        display: block;
+    }
+
+
 
 }
-.login-background{
-    margin-top: 2.5rem;
-}
+
+// .login-background{
+//     margin-top: 2.5rem;
+// }
 
 .loginBox {
 
-    background: rgba(235, 230, 230, 0.5);
+    background: rgba(235, 232, 232, 0.25);
     backdrop-filter: blur(10px);
     border-radius: 30px;
-    box-shadow: -30px -30px 100px 10px rgba(255, 255, 255, 0.2), 30px 40px 100px 10px rgba(0, 0, 0, 0.25);
-    position: relative;
-    top: 55px;
-   
+    box-shadow: -30px -30px 100px 10px rgba(199, 187, 187, 0.2), 30px 40px 100px 10px rgba(0, 0, 0, 0.25);
+    // position: relative;
+    border: 0.1px solid rgb(121, 120, 120);
 
+
+
+}
+
+label {
+    color: black !important;
+    font-size: 15px;
 }
 
 .logo {
     width: auto;
-
     font-size: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    @include mob {
+        font-size: 50px;
+    }
+
 }
-.loginSubmit{
+
+.loginSubmit {
     display: flex;
     align-items: center;
     justify-content: center;
-    >button{
+
+    >button {
         width: 140px;
         height: 45px;
         padding: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         color: white;
+
+        @include mob {
+            width: 90px;
+            height: 35px;
+            padding: 8px;
+        }
+
         background-color: rgb(22, 117, 62);
         border: none;
-        &:hover{
-            background-color: rgb(23, 47, 33); 
+
+        &:hover {
+            background-color: rgb(23, 47, 33);
         }
     }
 }
-.eyeBtn{
+
+.eyeBtn {
     background-color: rgb(249, 249, 249);
-    height: 40px;
+    height: 42px;
     width: 40px;
     border-radius: 0 5px 5px 0;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.outline{
-    // outline: none !important;
-    // border: none !important;
-    border: 0  !important;
-    box-shadow: none  !important;
+    border: 1px solid rgb(174, 170, 170) !important;
+    box-shadow: none !important;
+    // outline: 1px solid rgb(163, 159, 159);
+    color: black !important;
 }
 
-@media screen and (min-width:990px) {  
-.loginBox{
-    position: relative;
-    bottom: 80px;
-}
+.outline {
 
+    border: 1px solid rgb(174, 170, 170) !important;
+    box-shadow: none !important;
+    color: black !important;
+    ::placeholder {
+    font-size: 15px;
+      }
+}
+.check{
+    font-size: 15px !important;
+
+    @include mob {
+        font-size: 12px !important;
+       
+
+    }
+}
+.anchor{
+    
+    font-size: 14px !important;
+    color: #4e13e4 !important;
+    @include mob {
+        font-size: 12px !important;
+        
+
+    }
+}
+p {
+    color: black !important;
+    font-size: 14px;
+    @include mob {
+        font-size: 12px;
+        
+
+    }
 }

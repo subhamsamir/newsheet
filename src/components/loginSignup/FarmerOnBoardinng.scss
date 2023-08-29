@@ -1,0 +1,34 @@
+.FarmerOnBoardinng{
+    background: url("../../Images/bg1.jpeg") no-repeat 0 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    background-color: rgb(161, 179, 179);
+}
+button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 110px;
+    height: 40px;
+    padding: 8px;
+    color: white;
+    background-color: rgb(22, 117, 62);
+    border: none;
+    &:hover{
+        background-color: rgb(23, 47, 33); 
+    }
+}
+span{
+    font-size: 15px;
+}
+.btn-FarmerOnBoardinng{
+    width: 80px;
+    height: 30px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
