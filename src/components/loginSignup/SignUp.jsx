@@ -22,20 +22,18 @@ const SignUp = () => {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
+
   const navigate = useNavigate();
 
   const SignUpSubmitHandler = async (e) => {
-
     try {
-
       await createUserWithEmailAndPassword(
         auth,
         email,
         password,
         location,
         phone
-      )
+      );
       await addDoc(collection(firestore, "Users"), {
         name,
         location,
@@ -44,12 +42,11 @@ const SignUp = () => {
         state,
         district,
         tehsil,
-        village
-      }).then((response)=>alert("your account is created"))
-
+        village,
+      }).then((response) => alert("your account is created"));
     } catch (error) {
-      if(error){
-        alert("email is already registered")
+      if (error) {
+        alert("email is already registered");
         setName("");
         setLocation("");
         setState("");
@@ -59,10 +56,9 @@ const SignUp = () => {
         setPhone("");
         setEmail("");
         setPassword("");
-        
+
         return;
       }
-      
     }
     setName("");
     setLocation("");
@@ -74,7 +70,6 @@ const SignUp = () => {
     setEmail("");
     setPassword("");
     navigate("/Login");
-    
 
     // console.log({name, location, phone, email, password});
 
@@ -101,7 +96,6 @@ const SignUp = () => {
     <div className="container-fluid register1 ">
       <div className=" row  d-flex justify-content-center align-items-center  ">
         <div className="col-8  col-sm-8 col-md-4  signUpBox mt-3 mt-sm-5  ">
-
           <h3 className="text-center ">Signup</h3>
           <form
             autoComplete="off"
@@ -110,7 +104,10 @@ const SignUp = () => {
           >
             <div className="row ">
               <div className="col-10 offset-1">
-                <label className="labels" htmlFor="Name"> Name</label>
+                <label className="labels" htmlFor="Name">
+                  {" "}
+                  Name
+                </label>
                 <input
                   type="text"
                   className="form-control form-input"
@@ -125,7 +122,9 @@ const SignUp = () => {
 
             <div className="row ">
               <div className="col-10 offset-1">
-                <label className="labels" htmlFor="Location">Location</label>
+                <label className="labels" htmlFor="Location">
+                  Location
+                </label>
                 <input
                   type="text"
                   className="form-control form-input"
@@ -140,7 +139,9 @@ const SignUp = () => {
 
             <div className="row ">
               <div className="col-10 offset-1">
-                <label className="labels" htmlFor="state">state</label>
+                <label className="labels" htmlFor="state">
+                  state
+                </label>
                 <input
                   type="text"
                   className="form-control form-input"
@@ -153,88 +154,66 @@ const SignUp = () => {
               </div>
             </div>
 
-
-
             <div className="row ">
-            <div className="col-10 offset-1">
-              <label className="labels" htmlFor="district">district</label>
-              <input
-                type="text"
-                className="form-control form-input"
-                id="district"
-                placeholder="Enter your district"
-                value={district}
-                onChange={(e) => setDistrict(e.target.value)}
-                required
-              />
+              <div className="col-10 offset-1">
+                <label className="labels" htmlFor="district">
+                  district
+                </label>
+                <input
+                  type="text"
+                  className="form-control form-input"
+                  id="district"
+                  placeholder="Enter your district"
+                  value={district}
+                  onChange={(e) => setDistrict(e.target.value)}
+                  required
+                />
+              </div>
             </div>
-          </div>
-          <div className="row ">
-          <div className="col-10 offset-1">
-            <label className="labels" htmlFor="tehsil">tehsil</label>
-            <input
-              type="text"
-              className="form-control form-input"
-              id="tehsil"
-              placeholder="Enter your tehsil"
-              value={tehsil}
-              onChange={(e) => setTehsile(e.target.value)}
-              required
-            />
-          </div>
-        </div>
-        <div className="row ">
-        <div className="col-10 offset-1">
-          <label className="labels " htmlFor="village">village</label>
-          <input
-            type="text"
-            className="form-control form-input"
-            id="village"
-            placeholder="Enter your village"
-            value={village}
-            onChange={(e) => setVillage(e.target.value)}
-            required
-          />
-        </div>
-      </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            <div className="row ">
+              <div className="col-10 offset-1">
+                <label className="labels" htmlFor="tehsil">
+                  tehsil
+                </label>
+                <input
+                  type="text"
+                  className="form-control form-input"
+                  id="tehsil"
+                  placeholder="Enter your tehsil"
+                  value={tehsil}
+                  onChange={(e) => setTehsile(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+            <div className="row ">
+              <div className="col-10 offset-1">
+                <label className="labels " htmlFor="village">
+                  village
+                </label>
+                <input
+                  type="text"
+                  className="form-control form-input"
+                  id="village"
+                  placeholder="Enter your village"
+                  value={village}
+                  onChange={(e) => setVillage(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
 
             <div className="row ">
               <div className="col-10 offset-1">
-                <label className="labels" htmlFor="Phone"> Phone No.</label>
+                <label className="labels" htmlFor="Phone">
+                  Phone No.
+                </label>
                 <input
                   type="number"
                   className="form-control form-input"
                   id="Phone"
+                  minlength="10"
+                  maxlength="10"
                   placeholder="Enter your Phone No."
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
@@ -244,7 +223,9 @@ const SignUp = () => {
             </div>
             <div className="row ">
               <div className="col-10 offset-1">
-                <label className="labels" htmlFor="Email">Email</label>
+                <label className="labels" htmlFor="Email">
+                  Email
+                </label>
                 <input
                   type="emai"
                   className="form-control form-input"
@@ -258,7 +239,9 @@ const SignUp = () => {
             </div>
             <div className="row ">
               <div className="col-10 offset-1">
-                <label className="labels" htmlFor="Password">Password</label>
+                <label className="labels" htmlFor="Password">
+                  Password
+                </label>
                 <input
                   type="password"
                   className="form-control form-input"
