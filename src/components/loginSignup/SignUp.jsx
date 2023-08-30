@@ -22,10 +22,57 @@ const SignUp = () => {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isValidMobile, setIsValidMobile] = useState(true);
+  const [isValidEmail, setIsValidEmail] = useState(true);
 
   const navigate = useNavigate();
 
+  const handleMobileChange = (e) => {
+    const inputMobile = e.target.value;
+    setPhone(inputMobile);
+
+    const mobilePattern = /^[0-9]{10}$/; // Change this pattern according to your needs
+    setIsValidMobile(mobilePattern.test(inputMobile));
+  };
+  const handleEmailChange = (e) => {
+    const inputEmail = e.target.value;
+    setEmail(inputEmail);
+
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    setIsValidEmail(emailPattern.test(inputEmail));
+  };
+
   const SignUpSubmitHandler = async (e) => {
+    e.preventDefault();
+
+    if (!isValidMobile) {
+      alert("Please enter a valid 10-digit mobile number");
+      setName("");
+      setLocation("");
+      setState("");
+      setDistrict("");
+      setTehsile("");
+      setVillage("");
+      setPhone("");
+      setEmail("");
+      setPassword("");
+      return;
+    }
+    if (!isValidEmail) {
+      alert("Please enter a valid email ");
+      setName("");
+      setLocation("");
+      setState("");
+      setDistrict("");
+      setTehsile("");
+      setVillage("");
+      setPhone("");
+      setEmail("");
+      setPassword("");
+      return;
+    }
+
+
     try {
       await createUserWithEmailAndPassword(
         auth,
@@ -46,6 +93,7 @@ const SignUp = () => {
       }).then((response) => alert("your account is created"));
     } catch (error) {
       if (error) {
+        console.log(error)
         alert("email is already registered");
         setName("");
         setLocation("");
@@ -56,7 +104,6 @@ const SignUp = () => {
         setPhone("");
         setEmail("");
         setPassword("");
-
         return;
       }
     }
@@ -212,15 +259,9 @@ const SignUp = () => {
                   type="number"
                   className="form-control form-input"
                   id="Phone"
-                  minlength="10"
-                  maxlength="10"
                   placeholder="Enter your Phone No."
                   value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  pattern="^\s*\(?\s*\d{3}\s*\)?\s*[-]?\s*\d{3}\s*[-]?\s*\d{4}\s*$"
-                  min="1000000000"  
-                  max="9999999999"  
-                  step="1"
+                  onChange={handleMobileChange}
                   required
                 />
               </div>
@@ -236,8 +277,7 @@ const SignUp = () => {
                   id="Email"
                   placeholder="Enter your Email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+                  onChange={handleEmailChange}
                   required
                 />
               </div>
