@@ -238,6 +238,10 @@ const SignUp = () => {
                   placeholder="Enter your Phone No."
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
+                  pattern="^\s*\(?\s*\d{3}\s*\)?\s*[-]?\s*\d{3}\s*[-]?\s*\d{4}\s*$"
+                  min="1000000000"  
+                  max="9999999999"  
+                  step="1"
                   required
                 />
               </div>
@@ -252,6 +256,7 @@ const SignUp = () => {
                   placeholder="Enter your Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
                   required
                 />
               </div>
